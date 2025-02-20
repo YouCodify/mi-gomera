@@ -21,11 +21,11 @@
 
             <v-spacer></v-spacer>
 
-            <template v-if="$vuetify.display.mdAndUp">
+            <!-- <template v-if="$vuetify.display.mdAndUp">
                 <v-btn icon="mdi-magnify" variant="text"></v-btn>
 
-                <!-- <v-btn icon="mdi-filter" variant="text"></v-btn> -->
-            </template>
+                <v-btn icon="mdi-filter" variant="text"></v-btn>
+            </template> -->
 
             <!-- <v-btn :to="'/cart'">
                 <v-btn v-if="!cart.length" icon="mdi-cart-outline" variant="text"></v-btn>
@@ -38,7 +38,7 @@
             <router-view @update-cart="getCart"></router-view> <!-- Aquí se cargan las vistas -->
         </v-main>
 
-        <v-bottom-navigation color="primary" height="65">
+        <v-bottom-navigation color="primary" height="65" grow>
             <v-btn v-for="(item, index) in items" :key="index" :to="item.to">
                 <v-icon v-if="index != 1">{{ item.icon }}</v-icon>
                 <v-icon v-else-if="!cart.length">{{ item.icon }}</v-icon>

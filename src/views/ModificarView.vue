@@ -1,5 +1,5 @@
 <template>
-  <div class="about">
-    <h1>Modificar</h1>
-  </div>
+  <v-container>
+    <h1>Pendiente</h1>
+  </v-container>
 </template>

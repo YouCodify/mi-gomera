@@ -1,11 +1,14 @@
 <template>
-    <v-container>
-        <v-data-table :headers="headers" :items="inventario">
-            <template v-slot:item.action="{ item }">
-                <v-btn @click="addToCart(item)" color="primary" variant="text" icon="mdi-cart-plus"> </v-btn>
-            </template>
-        </v-data-table>
-    </v-container>
+    <v-row class="mt-5">
+        <v-col md="6" offset-md="3">
+            <v-text-field v-model="search" prepend-inner-icon="mdi-magnify" placeholder="Buscar..."></v-text-field>
+        </v-col>
+    </v-row>
+    <v-data-table :search="search" :headers="headers" :items="inventario" hover color="primary">
+        <template v-slot:item.action="{ item }">
+            <v-btn @click="addToCart(item)" color="primary" variant="text" icon="mdi-cart-plus"> </v-btn>
+        </template>
+    </v-data-table>
 </template>
 
 <script>
@@ -14,6 +17,7 @@ import axios from 'axios';
 export default {
     data() {
         return {
+            search: '',
             cart: [],
             inventario: [],
             headers: [

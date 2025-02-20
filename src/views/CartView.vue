@@ -1,7 +1,7 @@
 <template>
-    <v-data-table :headers="headers" :items="cart">
+    <v-data-table :headers="headers" :items="cart" hover>
         <template v-slot:item.action="{ item }">
-            <v-btn @click="deleteItem(item.codigo)" color="red" variant="text" icon="mdi-cart-off"> </v-btn>
+            <v-btn @click="deleteItem(item.codigo)" color="red" variant="text" icon="mdi-cart-remove"> </v-btn>
         </template>
     </v-data-table>
 </template>
@@ -16,7 +16,7 @@ export default {
                 { title: 'Nombre', key: 'name' },
                 { title: 'Marca', key: 'marca' },
                 { title: 'Existencia', align: 'right', key: 'cantidad' },
-                { title: 'Agregar', align: 'center', key: 'action' },
+                { title: 'Quitar', align: 'center', key: 'action' },
             ],
         };
     },
