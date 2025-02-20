@@ -1,21 +1,21 @@
 <template>
     <v-app>
-        <v-navigation-drawer v-model="drawer" permanent rail expand-on-hover @click="rail = false">
+        <!-- <v-navigation-drawer v-model="drawer" permanent rail expand-on-hover @click="rail = false">
             <v-list-item prepend-avatar="https://randomuser.me/api/portraits/men/85.jpg" title="José Abel">
                 <template v-slot:append>
                     <v-btn icon="mdi-chevron-left" variant="text" @click.stop="rail = !rail"></v-btn>
                 </template>
-            </v-list-item>
-            <v-divider></v-divider>
-            <v-list color="primary" nav>
-                <v-list-item v-for="(item, index) in items" :key="index" :to="item.to" :prepend-icon="item.icon"
-                    :title="item.title">
-                </v-list-item>
-            </v-list>
-        </v-navigation-drawer>
+</v-list-item>
+<v-divider></v-divider>
+<v-list color="primary" nav>
+    <v-list-item v-for="(item, index) in items" :key="index" :to="item.to" :prepend-icon="item.icon"
+        :title="item.title">
+    </v-list-item>
+</v-list>
+</v-navigation-drawer> -->
 
         <v-app-bar color="primary" elevation="0" density="comfortable">
-            <v-app-bar-nav-icon variant="text" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+            <!-- <v-app-bar-nav-icon variant="text" @click.stop="drawer = !drawer"></v-app-bar-nav-icon> -->
 
             <v-toolbar-title :text="$route.name" class="text-uppercase"> </v-toolbar-title>
 
@@ -27,16 +27,27 @@
                 <!-- <v-btn icon="mdi-filter" variant="text"></v-btn> -->
             </template>
 
-            <v-btn stacked :to="'/cart'">
+            <!-- <v-btn :to="'/cart'">
                 <v-btn v-if="!cart.length" icon="mdi-cart-outline" variant="text"></v-btn>
                 <v-badge v-else color="error" :content="cart.length">
                     <v-icon>mdi-cart-outline</v-icon>
                 </v-badge>
-            </v-btn>
+            </v-btn> -->
         </v-app-bar>
         <v-main>
             <router-view @update-cart="getCart"></router-view> <!-- Aquí se cargan las vistas -->
         </v-main>
+
+        <v-bottom-navigation color="primary" height="65">
+            <v-btn v-for="(item, index) in items" :key="index" :to="item.to">
+                <v-icon v-if="index != 1">{{ item.icon }}</v-icon>
+                <v-icon v-else-if="!cart.length">{{ item.icon }}</v-icon>
+                <v-badge v-else color="error" offset-y="-5" offset-x="-5" :content="cart.length">
+                    <v-icon>mdi-cart-outline</v-icon>
+                </v-badge>
+                <span>{{ item.title }}</span>
+            </v-btn>
+        </v-bottom-navigation>
     </v-app>
 
 </template>
@@ -53,10 +64,10 @@ export default {
                 icon: 'mdi-storefront',
                 to: "/"
             }, {
-                title: 'Salida',
-                value: 'salida',
-                icon: 'mdi-go-kart',
-                to: "/salida"
+                title: 'Carrito',
+                value: 'cart',
+                icon: 'mdi-cart',
+                to: "/cart"
             }, {
                 title: 'Modificar',
                 value: 'modificar',
