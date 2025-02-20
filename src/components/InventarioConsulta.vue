@@ -1,10 +1,6 @@
 <template>
     <v-container>
-        <v-data-table :headers="headers" :items="inventario" item-key="id">
-            <!-- <template v-slot:item.existencia="{ item }">
-                <v-chip>{{ item.existencia }}</v-chip>
-            </template> -->
-        </v-data-table>
+        <v-data-table :items="inventario"></v-data-table>
     </v-container>
 </template>
 
@@ -16,9 +12,10 @@ export default {
         return {
             inventario: [],
             headers: [
-                { text: 'Nombre', align: 'start', key: 'nombre' },
-                { text: 'Marca', align: 'start', key: 'marca' },
-                { text: 'Existencia', align: 'center', key: 'existencia' },
+                { text: 'Codigo', key: 'codigo' },
+                { text: 'Nombre', key: 'nombre' },
+                { text: 'Marca', key: 'marca' },
+                { text: 'Existencia', align: 'right', key: 'cantidad' },
             ],
         };
     },

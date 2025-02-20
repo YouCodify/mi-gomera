@@ -1,14 +1,14 @@
 [
     {
+        "codigo": "123456748",
         "name": "GOMA 1",
         "marca": "GOODYEAR",
-        "codigo": "123456748",
         "cantidad": 10
     },
     {
+        "codigo": "123456748",
         "name": "GOMA 2",
         "marca": "GOODYEAR",
-        "codigo": "123456748",
         "cantidad": 20
     }
 ]
