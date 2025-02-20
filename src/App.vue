@@ -1,6 +1,6 @@
 <template>
     <v-app>
-        <v-navigation-drawer v-model="drawer" permanent :rail="rail" @click="rail = false">
+        <v-navigation-drawer v-model="drawer" permanent rail expand-on-hover @click="rail = false">
             <v-list-item prepend-avatar="https://randomuser.me/api/portraits/men/85.jpg" title="José Abel">
                 <template v-slot:append>
                     <v-btn icon="mdi-chevron-left" variant="text" @click.stop="rail = !rail"></v-btn>
