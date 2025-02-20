@@ -18,7 +18,7 @@ export default {
             inventario: [],
             headers: [
                 { title: 'Codigo', key: 'codigo' },
-                { title: 'Nombre', key: 'nombre' },
+                { title: 'Nombre', key: 'name' },
                 { title: 'Marca', key: 'marca' },
                 { title: 'Existencia', align: 'right', key: 'cantidad' },
                 { title: 'Agregar', align: 'center', key: 'action' },
