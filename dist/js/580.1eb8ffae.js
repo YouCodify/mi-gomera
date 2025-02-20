@@ -1,0 +1,2 @@
+"use strict";(self["webpackChunkmi_gomera"]=self["webpackChunkmi_gomera"]||[]).push([[580],{3580:function(n,r,e){e.r(r),e.d(r,{default:function(){return f}});var u=e(6768);function a(n,r){return(0,u.uX)(),(0,u.CE)("h1",null,"Salida")}var t=e(1241);const c={},i=(0,t.A)(c,[["render",a]]);var f=i}}]);
+//# sourceMappingURL=580.1eb8ffae.js.map
