@@ -36,10 +36,11 @@ export default {
       // Guardar el carrito actualizado en localStorage
       localStorage.setItem('cart', JSON.stringify(cart));
       this.getCart();
+      this.$emit('update-cart', this.product);
     },
     addToCart(product) {
       // Buscar si el producto ya existe en el carrito
-      const existingProduct = this.cart.find(item => item.name === product.name);
+      const existingProduct = this.cart.find(item => item.codigo === product.codigo);
       if (existingProduct) {
         // Si el producto ya está en el carrito, aumentar la cantidad
         existingProduct.quantity += product.quantity;

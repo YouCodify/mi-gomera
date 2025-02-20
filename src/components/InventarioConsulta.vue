@@ -1,14 +1,5 @@
 <template>
     <v-container>
-        {{ inventario }}
-        <!-- <v-data-table :headers="headers" :items="inventario">
-            <template v-slot:item.action="{ value }">
-                <v-chip>
-                    {{ value }}
-                </v-chip>
-            </template>
-</v-data-table> -->
-
         <v-data-table :headers="headers" :items="inventario">
             <template v-slot:item.action="{ item }">
                 <v-btn @click="addToCart(item)" color="primary" variant="text" icon="mdi-cart-plus"> </v-btn>
@@ -64,6 +55,7 @@ export default {
 
             // Almacenar el carrito actualizado en localStorage
             localStorage.setItem('cart', JSON.stringify(this.cart));
+            this.$emit('update-cart', this.product);
         },
     },
 };

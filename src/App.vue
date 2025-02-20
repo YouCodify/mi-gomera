@@ -29,13 +29,13 @@
 
             <v-btn stacked :to="'/cart'">
                 <v-btn v-if="!cart.length" icon="mdi-cart-outline" variant="text"></v-btn>
-                <v-badge v-else color="error" content="2">
+                <v-badge v-else color="error" :content="cart.length">
                     <v-icon>mdi-cart-outline</v-icon>
                 </v-badge>
             </v-btn>
         </v-app-bar>
         <v-main>
-            <router-view></router-view> <!-- Aquí se cargan las vistas -->
+            <router-view @update-cart="getCart"></router-view> <!-- Aquí se cargan las vistas -->
         </v-main>
     </v-app>
 
