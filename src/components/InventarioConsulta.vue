@@ -28,7 +28,7 @@ export default {
     methods: {
         cargarInventario() {
             axios
-                .get('https://youcodify.github.io/mi-gomera/src/assets/inventario.json')
+                .get('https://youcodify.github.io/mi-gomera/public//inventario.json')
                 .then(response => {
                     const data = atob(response.data.content); // Decodifica el base64
                     this.inventario = JSON.parse(data);
