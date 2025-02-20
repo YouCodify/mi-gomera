@@ -30,8 +30,7 @@ export default {
             axios
                 .get('https://youcodify.github.io/mi-gomera/public//inventario.json')
                 .then(response => {
-                    const data = atob(response.data.content); // Decodifica el base64
-                    this.inventario = JSON.parse(data);
+                    this.inventario = response.data;
                 });
         },
     },
