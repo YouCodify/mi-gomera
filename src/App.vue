@@ -1,87 +1,89 @@
 <template>
-  <!-- <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav> -->
+    <v-app>
+        <v-navigation-drawer v-model="drawer" permanent :rail="rail" @click="rail = false">
+            <v-list-item prepend-avatar="https://randomuser.me/api/portraits/men/85.jpg" title="José Abel">
+                <template v-slot:append>
+                    <v-btn icon="mdi-chevron-left" variant="text" @click.stop="rail = !rail"></v-btn>
+                </template>
+            </v-list-item>
+            <v-divider></v-divider>
+            <v-list color="primary" nav>
+                <v-list-item v-for="(item, index) in items" :key="index" :to="item.to" :prepend-icon="item.icon"
+                    :title="item.title">
+                </v-list-item>
+            </v-list>
+        </v-navigation-drawer>
 
-  <!-- <router-view /> -->
+        <v-app-bar color="primary" elevation="0" density="comfortable">
+            <v-app-bar-nav-icon variant="text" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
 
-  <v-app>
-    <v-app-bar color="primary">
-      <v-app-bar-nav-icon variant="text" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+            <v-toolbar-title :text="$route.name" class="text-uppercase"> </v-toolbar-title>
 
-      <v-toolbar-title>My files</v-toolbar-title>
+            <v-spacer></v-spacer>
 
-      <v-spacer></v-spacer>
+            <template v-if="$vuetify.display.mdAndUp">
+                <v-btn icon="mdi-magnify" variant="text"></v-btn>
 
-      <template v-if="$vuetify.display.mdAndUp">
-        <v-btn icon="mdi-magnify" variant="text"></v-btn>
+                <!-- <v-btn icon="mdi-filter" variant="text"></v-btn> -->
+            </template>
 
-        <v-btn icon="mdi-filter" variant="text"></v-btn>
-      </template>
-
-      <v-btn icon="mdi-dots-vertical" variant="text"></v-btn>
-    </v-app-bar>
-
-    <v-navigation-drawer v-model="drawer" temporary>
-      <v-list :items="items"></v-list>
-    </v-navigation-drawer>
-
-    <v-main>
-      <router-view></router-view> <!-- Aquí se cargan las vistas -->
-    </v-main>
-  </v-app>
+            <v-btn stacked :to="'/cart'">
+                <v-btn v-if="!cart.length" icon="mdi-cart-outline" variant="text"></v-btn>
+                <v-badge v-else color="error" content="2">
+                    <v-icon>mdi-cart-outline</v-icon>
+                </v-badge>
+            </v-btn>
+        </v-app-bar>
+        <v-main>
+            <router-view></router-view> <!-- Aquí se cargan las vistas -->
+        </v-main>
+    </v-app>
 
 </template>
 <script>
 export default {
-  data() {
-    return {
-      drawer: false,
-      items: [
-        {
-          title: 'Inventario',
-          value: 'inventario',
+    data() {
+        return {
+            cart: [],
+            drawer: true,
+            rail: true,
+            items: [{
+                title: 'Inventario',
+                value: 'inventario',
+                icon: 'mdi-storefront',
+                to: "/"
+            }, {
+                title: 'Salida',
+                value: 'salida',
+                icon: 'mdi-go-kart',
+                to: "/salida"
+            }, {
+                title: 'Modificar',
+                value: 'modificar',
+                icon: 'mdi-cog',
+                to: "/modificar"
+            },],
+        };
+    },
+    created() {
+        this.getCart();
+    },
+    methods: {
+        getCart() {
+            // Obtener el carrito de localStorage (si existe)
+            const cart = localStorage.getItem('cart');
+            this.cart = cart ? JSON.parse(cart) : [];
         },
-        {
-          title: 'Salida',
-          value: 'salida',
-        },
-        {
-          title: 'Modificar',
-          value: 'modificar',
-        },
-      ],
-    };
-  },
-  created() {
-
-  },
-  methods: {
-  },
+    },
 };
 </script>
 
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-nav {
-  padding: 30px;
-}
-
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #2c3e50;
 }
 </style>
